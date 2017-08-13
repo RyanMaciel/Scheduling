@@ -1,0 +1,24 @@
+.taskListContainer{
+	width: 65%;
+}
+.taskListContainer .taskContainer{
+	height: 40px;
+	padding:10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.taskListContainer .divider{
+	width: 100%;
+	height: 1px;
+	background-color: #dddddd;
+}
+.taskListContainer .title{
+
+}
+.taskListContainer .due{
+	padding-right: 10px;
+}
+.taskListContainer .scheduleButton{
+	margin-right: 10px;
+}

@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App .pageContents{
+  flex-grow: 1;
+  margin-left: 25px;
 }
 
 .App-header {

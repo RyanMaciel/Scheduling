@@ -1,0 +1,14 @@
+.tasks{
+}
+.tasks .unscheduled{
+	margin-bottom: 100px;
+}
+.tasks .scheduled{
+
+}
+.tasks .titleLabel{
+	text-align: left;
+	color: #aaaaaa;
+	margin: 20px 0px;
+	display: block
+}
