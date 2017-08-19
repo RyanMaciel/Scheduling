@@ -9,3 +9,7 @@ export function tasksPopulated(tasks){
 export function taskEdited(id, updatedTask){
 	return {type: 'Task_Edited', payload: {id, updatedTask}}
 }
+
+export function taskCreated(taskObject){
+	return {type: 'Task_Created', payload: taskObject};  
+}

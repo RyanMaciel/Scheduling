@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {taskEdited, taskCreated} from '../../Helpers/Actions';
-import TaskList from '../../Components/TaskList/TaskList';
-import TaskCreator from '../../Components/TaskCreator/TaskCreator';
-import './Tasks.css'
-class Tasks extends Component {
+
+class Weekly extends Component {
 
 	render() {
 
@@ -24,17 +22,7 @@ class Tasks extends Component {
 
 		return (
 			<div className="tasks">
-				<label className="titleLabel">Unscheduled</label>
-				<div className="unscheduled">
-					<TaskList tasks={unscheduled} onTaskEdit={this.props.taskEdited}/>
-				</div>
-				<label className="titleLabel">Scheduled</label>
-				<div className="scheduled">
-					<TaskList tasks={scheduled} onTaskEdit={this.props.taskEdited}/>
-				</div>
-				<TaskCreator onCreate={(newTask)=>{
-					this.props.taskCreated(newTask);
-				}}/>
+
 			</div>
 		);
 	}
@@ -57,4 +45,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
+export default connect(mapStateToProps, mapDispatchToProps)(Weekly);

@@ -1,0 +1,36 @@
+.taskCreator{
+	width: 500px;
+	padding: 10px 15px 25px 25px;
+	margin: 35px 0px;
+	text-align: left;
+}
+
+.taskCreator .fields{
+	margin: 0px 0px 25px 10px;
+	text-align: left;
+}
+
+.taskCreator .fields{
+	margin: 0px 0px 25px 10px;
+	text-align: left;
+}
+
+.taskCreator .datePicker{
+	margin-top: 10px;
+	z-index: 10;
+}
+
+.taskCreator .buttonGroup{
+	visibility: visible;
+	text-align: right;
+	color: white;
+	z-index: 1;
+}
+
+.taskCreator .buttons{
+	margin: 0px 8px; 
+}
+
+.taskCreator .fieldLabel{
+	margin-right: 15px; 
+}
