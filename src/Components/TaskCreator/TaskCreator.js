@@ -11,7 +11,7 @@ class TaskCreator extends Component {
 		return(
 			<Paper className="taskCreator">
 				<h3>Create New Task</h3>
-				<TaskEditForm onCreate={this.props.onCreate} />
+				<TaskEditForm onCreate={this.props.onSave} />
 			</Paper>
 		);
 	}

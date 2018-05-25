@@ -15,6 +15,7 @@ class Tasks extends Component {
 		console.log(this.props.tasks);
 		Object.keys(this.props.tasks).forEach((key)=>{
 			let object = this.props.tasks[key];
+			object['id'] = key;
 			if(object.event){
 				scheduled.push(object);
 			}else{

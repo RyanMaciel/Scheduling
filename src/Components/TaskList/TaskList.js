@@ -17,10 +17,9 @@ export default class TaskList extends Component {
 		super(props);
 
 		this.state = {
-			open: false,
+			editObject: undefined,
 		};
 
-		this.editObject = {};
 
 		this.handleEditOpen = this.handleEditOpen.bind(this);
 		this.handleEditClose = this.handleEditClose.bind(this);
@@ -28,21 +27,44 @@ export default class TaskList extends Component {
 
 	}
 	handleEditOpen(taskObject){
-		this.setState({open: true});
-		this.editObject = taskObject;
+		//If the edit object is the same, close the dialog.
+		if(this.state.editObject === taskObject){
+			this.handleEditClose();
+		}else{
+			//Otherwise update the edit object so that a rerender will happen that displays it.
+			this.setState({
+				editObject: taskObject,
+			});
+		}
 	}
 	handleEditClose(){
-		this.setState({open: false});
+		this.setState({editObject: undefined});
 	}
 	handleSubmit(){
 		this.handleEditClose();
-		this.props.onTaskEdit(this.editObject.id, this.editObject);
+		this.props.onTaskEdit(this.state.editObject.id, this.state.editObject);
 	}
+
 	render() {
+		
+		// Create list items for every task.
 		let tasks = this.props.tasks.map((object, index)=>{
 			let divider = index < this.props.tasks.length - 1 ? <div className="divider"/> : null;
+
+			// If this object === the edit object, create an edit dialog.
+			let edit;
+			if(this.state.editObject === object){
+				 edit = (
+				 	<div style = {{padding: '15px 40px'}}>
+					 	<TaskEditForm task={this.state.editObject} onCancel={this.handleEditClose} onSave={(task)=>{
+							this.props.onTaskEdit(task.id, task)
+						}}/>
+					</div>)
+			}
+
 			let scheduleButton = !object.event ? <RaisedButton className="scheduleButton" label={'schedule'} primary={true}/> : null;
 			let date = moment(object.due).format('dddd');
+
 			return(
 				<div key={index}>
 					<div className="taskContainer">
@@ -55,37 +77,14 @@ export default class TaskList extends Component {
 							}}/>
 						</div>
 					</div>
+						{edit}
 					{divider}
 				</div>
 			);
 		});
-
-		const editActions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={this.handleEditClose}
-      />,
-      <FlatButton
-        label="Apply"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this.handleSubmit}
-      />
-    ];
-
 		return (
 			<Paper className="taskListContainer">
 				{tasks}
-				<Dialog 
-					Title="Edit Task"
-					modal={false}
-					open={this.state.open}
-					actions={editActions}
-					onRequestClose={this.handleEditClose}
-				>
-					<TaskEditForm />
-				</Dialog>
 			</Paper>
 
 		);

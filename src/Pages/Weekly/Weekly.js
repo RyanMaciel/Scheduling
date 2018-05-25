@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {taskEdited, taskCreated} from '../../Helpers/Actions';
-
+import WeeklyCalendar from '../../Components/WeeklyCalendar/WeeklyCalendar'
 class Weekly extends Component {
 
 	render() {
@@ -22,7 +22,7 @@ class Weekly extends Component {
 
 		return (
 			<div className="tasks">
-
+				<WeeklyCalendar tasks={this.props.tasks}/>
 			</div>
 		);
 	}
